@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script>
+            // To Display Battery Level
+            navigator.getBattery().then(function(battery) {
+            console.log(battery.level);
+            document.getElementById("bat").innerHTML=battery.level;
+            });
+        </script>
+    </head>
+    <body>
+        <center>
+            <h1>
+                Time and Clock:<p id="bat"></p>
+            </h1>
+        </center>
+    </body>
+</html>

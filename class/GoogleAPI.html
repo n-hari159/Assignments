@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Geo Location API integrate</title>    
+    <script>
+        navigator.geolocation.getCurrentPosition(function(position){
+            showPosition(position.coords.latitude, position.coords.longitude)
+        }); 
+        function showPosition(lati,longi){
+            document.getElementById("geoloc").innerHTML = "Latitude: " + lati + "<br>Longitude: " + longi; 
+            }                                       
+    </script>
+</head>
+<body>
+    <!--<iframe id="geoloc" height="300" width="300"></iframe>  -->
+    <h2 id="geoloc"></h2>  
+    
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+    async defer></script>-->
+</body>
+</html>
