@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <div class="a">
+            <div class="b">
+                <div class="c">
+                    <div class="d">
+                        <div class="e">
+                            <div class="f">
+                                <div class="g"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            div {
+                    box-sizing: border-box; 
+                    border: 1px solid black;
+                    position: relative;
+                    overflow: hidden;
+                }
+                div:after {
+                    content: "";
+                    display: box;
+                    border: 3px solid black;  
+                    border-radius: 50%;
+                    position: absolute;
+                    z-index: -1;
+                }
+                .a {
+                    width: 100%; height: 61.8vw;
+                    background-color: lightblue;
+                }
+                .a:after {
+                    width: 122%; height: 200%;
+                    background-color: lightcoral;
+                }
+                .b {
+                    width: 38.2%; height: 100%;
+                    float: left;
+                    background-color: red;
+                }
+                .b:after {
+                    width: 200%; height: 122%;
+                    right: 0;
+                    background-color: blue;
+
+                }
+                .c {
+                    width: 100%; height: 38.2%;
+                    position: absolute;
+                    bottom: 61.8%;
+                    background-color: green;
+                }
+                .c:after {
+                    width: 122%; height: 200%;
+                    right: 0; bottom: 0;
+                    background-color: brown;
+                }
+                .d {
+                    width: 38.2%; height: 100%;
+                    position: absolute;
+                    background-color: aquamarine;
+                }
+                .d:after {
+                    width: 200%; height: 122%;
+                    bottom: 0;
+                    background-color: blueviolet;
+                }
+                .e {
+                    width: 100%; height: 38.2%;
+                    position: absolute;
+                    background-color:black;
+                }
+                .e:after {
+                    width: 122%; height: 200%;
+                }
+                .f {
+                    width: 38.2%; height: 100%;
+                    position: absolute;
+                    left: 0;
+                    background-color: yellow;
+                }       
+                .f:after {
+                    width: 200%; height: 122%;
+                    right: 0;
+                }
+                .g {
+                    width: 100%; height: 61.8%;
+                    position: absolute;
+                    bottom: 0;
+                    background-color: blue;
+                }
+                .g:after {
+                    width: 122%; height: 200%;
+                    right: 0; bottom: 0;
+                }
+        </style>
+    </head>
+</html>
