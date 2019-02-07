@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div style="width:100px;height:100px;background:grey;position: absolute;top: 40%;left: 40%" id="box">
+        </div>
+        <script>
+            var w = 100;
+            var h = 100;
+            var foo = setInterval(function () {
+            if(w>250) cancelInterval(foo)
+                w = w + 5;
+                h = h + 5;
+            document.getElementById('box').style.width = w + 'px';
+            document.getElementById('box').style.height = h + 'px';}, 1000);
+        </script>
+    </body>    
+</html>

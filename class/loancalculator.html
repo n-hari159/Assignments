@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function calculate(){
+                var amount=document.getElementById("principal");
+                var interest=document.getElementById("interest");
+                var years=document.getElementById("time");
+                var p=amount.value;
+                var t=years.value;
+                var r=interest.value;
+                var sum=parseFloat(p*(1+(r*t)));
+                alert(sum);
+            }
+        </script>
+    </head>
+    <body>
+        <form action="hello" method="POST" onSubmit="return calculate(this);">
+            Interest(per year) : <input id="interest" type="number" name="interest"><br>
+            Time (in years)  : <input id="time" type="number" name="time"><br>
+            Principal : <input id="principal" type="number" name="principal"><br>
+            <input type="submit" onclick="calculate()" value="Submit">
+         </form>  
+    </body>  
+</html>
