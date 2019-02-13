@@ -1,0 +1,311 @@
+<script>
+	document.getElementById('page-banner')
+		// output 
+		// <div id="page-banner">
+		// 	<h1 class="title">Bookorama</h1>
+		// 	<p>Books for Ninjas</p>
+		// 	<form id="search-books">...</form>
+		// </div>
+	var banner = document.getElementById('page-banner');
+
+	var titles = document.getElementByClassName('title')
+		// output 
+		// [h1.title, h2.title] 
+		// - this an html collection not traditional array
+		console.log(Array.isArray(titles)); //- false
+	titles[0]
+		// output 
+		// <h1 class='title'>Bookorama</h1>
+
+	var lis = document.getElementsByTagName('li')
+		// output 
+		// [li,li,li,li]
+	lis[0]
+		// output 
+		// <li>...</li>
+
+	// Method #1 - for accessing elements
+	for(i=0;i<titles.length;i++){
+		console.log(titles[i]);
+	}
+		// output 
+		// <h1 class='title'>Bookorama</h1>
+		// <h2 class='title'>Books to Read</h2>
+	// Method #2 - for accessing elements
+	 // - convert html collection into an array
+	 Array.from(titles);
+	 // - now we can use forEach method on array
+	Array.from(titles).forEach(function(item){
+		console.log(item);
+	})
+
+	// - grab the second li in a ul with class='name' from a div with id book-list
+	const wmf = document.querySelector('#book-list li:nth-child(2) .name');
+		// output 
+		// <span class='name'>The Wise Man's Fear</span>
+
+	// - grab all span tags from a ul
+	var books = document.querySelectorAll('#book-list li .name');
+	// - just querySelector returns one element
+	// - querySelectorAll returns a node list
+	books.forEach(function(book){
+		console.log(book);
+	})
+	// - a NodeList need not be converted into an array
+	// - however, getElementByClassName returns a html collection
+
+	// - retrieve the text content
+	book.forEach(function(book){
+		console.log(book.textContent);
+	})
+		// output 
+		// Name of the Wind
+		// The Wise Man's Fear
+		// Kafka on the Shore
+		// The Master and the Marigarita
+
+	// - setting text content to an element
+	book.forEach(function(book){
+		book.textContent += ' (book title)';
+	})
+	// - appends string '(book title)' to the text in the element
+		// output 
+		// Name of the Wind (book title)
+		// The Wise Man's Fear (book title)
+		// Kafka on the Shore (book title)
+		// The Master and the Marigarita (book title)
+
+	// - change text in an element
+	const bookList = document.querySelector('#book-list');
+	console.log(bookList.innerHTML);
+	// - returns html
+	bookList.innerHTML = '<h2>Books and more books...</h2>';
+	// - append to this value
+	bookList.innerHTML += '<p>This is how you add HTML</p>';
+		// output 
+		// <h2>Books and more books...</h2>
+		// <p>'This is how you add HTML'</p>
+
+	// - DOM Node
+	const banner = document.querySelector('#page-banner');
+	console.log('#page-banner node type is: ', banner.nodeType);
+	console.log('#page-banner node name is: ', banner.nodeName);
+	console.log('#page-banner has child nodes: ', banner.hasChildNodes());
+		// output 
+		// #page-banner node type is: 1
+		// #page-banner node name is: DIV
+		// #page-banner has child nodes: true
+
+	// - node type return values
+	// node type	nodeName returns	nodeValue returns
+	// 1 Element	element name		null
+	// 2 Attr		attribute name		attribute value
+	// 3 Text		#text				content of node
+	// 4 CDATASection
+	// 5 EntityReference				null
+	// 6 Entity						null
+	// 7 ProcessingInstruction	targe	content of node
+
+	// - clone a child node
+	const clonedBanner = banner.cloneNode(true);
+	// - true argument will traverse through the child nodes
+	// - without true only topmost child is returned
+	console.log(clonedBanner);
+		// output 
+		// <div id='page-banner'>
+		// 	<h1 class='title'>Bookorama</h1>
+		// 	<p>Books for Ninjas</p>
+		// 	<form id='search-books'>...</form>
+		// </div>
+	const clonedBanner = banner.cloneNode(false);
+	console.log(clonedBanner);
+	// - does not return nested nodes
+		// output 
+		// <div id='page-banner'></div>
+
+	// - DOM Traversal from parent to child and vice-versa
+	// const bookList = document.querySelector('#book-list');
+	// console.log('the parent node is: ', bookList.parentNode);
+	// 	// output 
+	// 	the parent node is: 
+		// <div id="wrapper">...</div>
+	console.log('the parent node is: ', bookList.parentElement);
+	// - returns the same as parentNode
+	console.log('the parent node is: ', bookList.parentElement.parentElement);
+	// - grabs the parent of parent - body
+		// output 
+		// the parent node is:
+		// <body>
+		// 	<div id="wrapper">...</div>
+		// </body>
+	console.log(bookList.childNode);
+		// output 	
+		// [text, h2.title, text, ul, text]
+	// - returns the line breaks as well whenever we get child nodes
+	// - text holds those line breaks
+	// - to get just the elements
+	console.log(bookList.children);
+		// output 	
+		// [h2.title, ul]
+	// - DOM Traversal between siblings
+	const bookList = document.querySelector('#book-list');
+	console.log("bookList next sibling is : ", bookList.nextSibling);
+		// output 	
+	// 	bookList next sibling is : #text
+	// - returns line break as next sibling
+	// - for next element instead of line break
+	console.log("bookList next element sibling is : ", bookList.nextElementSibling);
+		// output 
+		// bookList next element sibling is : 
+		// <form id="add-book">...</form>
+	// - for previous element
+	console.log("bookList previous sibling is : ", bookList.previousSibling);
+	console.log("bookList previous element sibling is : ", bookList.previousElementSibling);
+	// - get the p tag from previous sibling and set some text
+	bookList.previousElementSibling.querySelector('#p').innerHTML += '<br />written to DOM'
+
+
+	// - DOM events remove contents
+	var h2 = document.querySelector('#book-list h2');
+	h2
+		// output 
+		// <h2 class='title'>Books to Read</h2>
+	h2.addEventListner('click', function(e) {
+		console.log(e.target);
+		console.log(e);
+	});
+	// - when clicked on h2
+		// output 
+		// <h2 class='title'>Books to Read</h2>
+		MouseEvent {isTrusted: true, screenX: 430, screenY: 319 ...}
+	// - removing elements on click
+	var btns = document.querySelectorAll('#book-list .delete');
+	btns.forEach(function(btn) {
+		btn.addEventListner('click', function(e){
+			// li is the parent element associated with a button
+			const lis = e.target.parentElement;
+			
+			// remove element on click
+			lis.parentNode.removeChild(lis)
+			
+			// parent node of the li is ul
+			// from that ul remove the child retrieved in lis
+		}
+	})
+	// - do something when clicked (attaching events)
+	const link = document.querySelector('#page-banner a');
+	link.addEventListner('click', function(e) {
+		// prevent default behaviour of the element
+		// ex - prevent loading a website when a link is clicked
+		e.preventDefault();
+		console.log('navigate to : ', e.target.textContent, ' was prevented');
+	})
+
+	// - Event bubbling
+	/*
+		if we have lot of buttons on the page, then it will
+		be a big task to attach an event listener to every
+		every single button. Takes longer for js to do.
+		Ideally we could just attach an event listener to 
+		the parent then when we click on the button on the
+		children the event is going to bubble up to the parent.
+	*/
+	// delete books
+	const list = document.querySelector('#book-list ul');
+	list.addEventListner('click', function (e){
+		// if the button clicked is delete
+		if (e.target.className == 'delete') {
+			// target - button
+			const li = e.target.parentElement;
+			// remove the child
+			// li.parentNode.removeChild(li);
+			// remove the li associated with the button clicked
+			li.removeChild(li);
+		}
+	});
+	
+	// - interacting with forms	
+	// document.forms returns html collection of form
+	// accessing a particular element from the html collection
+	// document.forms['add-book']
+	// add books
+	const addForm = document.forms['add-book'];
+	// e - event object
+	addForm.addEventListner('submit', function (e){
+		// prevent a default behavior, after deleting
+		// an item, when we click add button it refreshes 
+		// the page to original html
+		e.preventDefault();
+		// grab the value from add field
+		const value = addForm.querySelector('input[type="text"]').value;
+		// console.log(value);
+	})
+
+	// - creating elements when add button is clicked
+	const li = document.createElement('li');
+	const bookName = document.createElement('span');
+	const deleteBtn = document.createElement('span');
+
+	// add content to span tags
+	deleteBtn.textContent = 'delete';
+	// get the value from add button field
+	bookName.textContent = 'value';
+
+	// - styling content through dom
+	// li.style.color = "red";
+	// adds inline style to li
+	// apply class name to li
+	// li.className = "test";
+	bookName.classList.add("name");
+	deleteBtn.classList.add("delete");
+	// bookName.classList.remove("name");
+
+	// nesting span tags to li
+	li.appendChild(bookName);
+	li.appendChild(deleteBtn);
+	// appending li to the list
+	list.appendChild(li);
+
+	// - change attributes
+	// var book = document.querySelector('li:first-child.name');
+	// book will output 
+	// 	<span class="name">Name of the wind</span>
+	// book.getAttribute('class');
+	// book.getAttribute('href');
+	// book.setAttribute('class', 'name-2');
+	// book.hasAttribute('class') - true, false
+	// book.removeAttribute('class');
+
+	// - checkbox events
+	// hide books
+	const hideBox = document.querySelector('#hide');
+	hideBox.addEventListner('change', function (e){
+		if (hideBox.checked) {
+			list.style.display = "none";			
+		} else {
+			list.style.display = "initial";
+		}
+	})
+
+	// - create a search filter
+	// filter books
+	const searchBar = document.forms['search-books'].querySelector('input');
+	searchBar.addEventListner('keyup', function (e){
+		// grab values from input field of search box
+		const term = e.target.value.toLowerCase();
+		// grab all li tags
+		const books = list.getElementsByTagName('li');
+		Array.from(books).forEach(function (book){
+			const title = book.firstElementChild.textContent;
+			// get the index of search term from title
+			if (title.toLowerCase().indexOf(term) != -1) {
+				book.style.display = "block";
+			} else {
+				book.style.display = "none";
+			}
+		})
+	})
+
+
+</script>
+
