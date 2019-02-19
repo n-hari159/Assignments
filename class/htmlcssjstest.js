@@ -43,3 +43,8 @@ var person = {
         alert('Hi! I\'m ' + this.name[0] + '.');
     }
 };
+
+//Adding member names and values dynamically to object person with "[]" notation
+var myDataName = 'height';
+var myDataValue = '1.75m';
+person[myDataName] = myDataValue;
