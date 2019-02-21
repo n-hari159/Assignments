@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* All p elements are red */
+        
+        p,
+        div {
+            color: red;
+        }
+        /* The element with the class "first" is bolded */
+        
+        .first {
+            font-weight: bold;
+        }
+        /* All the elements with the class "done" are strikethrough */
+        
+        .done {
+            text-decoration: line-through;
+        }
+        
+        #polite {
+            font-family: cursive;
+        }
+        
+        #rude {
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+        
+        * {
+            padding: 5px;
+            border: 1px solid black;
+            background: rgba(255, 0, 0, 0.25)
+        }
+    </style>
+</head>
+
+<body>
+    <p>What color do you like?</p>
+    <div>I like blue.</div>
+    <p>I prefer BLACK!</p>
+    <ul>
+        <li class="first done">Create an HTML document</li>
+        <li class="second done">Create a CSS style sheet</li>
+        <li class="third">Link them all together</li>
+    </ul>
+    <p id="polite"> — "Good morning."</p>
+    <p id="rude"> — "Go away!"</p>
+    <div>
+        <p>I think the containing box just needed a <strong>border</strong> or <em>something</em>, but this is getting <strong>out of hand</strong>!</p>
+    </div>
+</body>
+
+</html>
