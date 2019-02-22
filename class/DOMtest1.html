@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function generate_table() {
+            //get the reference for the body
+            var body = document.getElementsByTagName("body")[0];
+
+            //create a <table> element and <tbody> element
+            var tbl = document.createElement("table");
+            var tblBody = document.createElement("tblbody");
+
+            //creating cells
+            for (var i = 0; i < 2; i++) {
+                //creates a table row
+                var row = document.createElement("tr");
+
+                for (var j = 0; j < 2; j++) {
+                    //create a <td> element and a text node, make the text node the contents of <td>, and put <td> at the end of table row
+                    var cell = document.createElement("td");
+                    var cellText = document.createTextNode("cell in row" + i + ",column" + j);
+                    cell.appendChild(cellText);
+                    row.appendChild(cell);
+                }
+
+                //add the row to the end of table body
+                tblBody.appendChild(row);
+            }
+
+            // put the <tbody> in the <table>
+            tbl.appendChild(tblBody);
+            // appends <table> into <body>
+            body.appendChild(tbl);
+            // sets the border attribute of tbl to 2;
+            tbl.setAttribute("border", "2");
+        }
+    </script>
+</head>
+
+<body>
+    <p>Hello !</p>
+    <input type="button" value="Generate a table" onclick="generate_table()">
+</body>
+
+</html>
