@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function set_background() {
+            //refer to body element
+            var myBody = document.getElementsByTagName("body")[0];
+
+            //get all p elements that are in the body
+            var myBodyElements = myBody.getElementsByTagName("p");
+
+            //selecting the second p element
+            myP = myBodyElements[1];
+            myP.style.background = "pink";
+        }
+    </script>
+</head>
+
+<body>
+
+    <body>
+        <input type="button" value="Set paragraph background color" onclick="set_background()">
+        <p>hi</p>
+        <p>hello</p>
+    </body>
+</body>
+
+</html>

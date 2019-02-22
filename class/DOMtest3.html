@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function appendtext() {
+            var body = document.getElementsByTagName("body")[0];
+            var myBodyElements = body.getElementsByTagName("p");
+            myP = myBodyElements[0];
+            myTextNode = document.createTextNode("world");
+            myP.appendChild(myTextNode);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="append text" onclick="appendtext()">
+    <p>Hello !,</p>
+</body>
+
+</html>

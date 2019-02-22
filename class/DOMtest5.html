@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function new_element() {
+            var body = document.getElementsByTagName("body")[0];
+            var newElement = document.createElement("p");
+            body.appendChild(newElement);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="new element" onclick="new_element()">
+    <p>Hello !</p>
+</body>
+
+</html>
