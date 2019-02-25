@@ -1,0 +1,27 @@
+.wrapper {
+    width: 80%;
+    height: 60%;
+    position: absolute;
+    padding: 20px 20px;
+    top: 30%;
+    left: 20%;
+    border: 2px solid aqua;
+    background-color: white;
+    overflow: hidden;
+}
+
+.image-holder {
+    position: relative;
+    padding: 20px 20px 20px 0px;
+    top: 15px;
+}
+
+.form-header {
+    position: relative;
+    top: 50px;
+}
+
+.inner {
+    position: absolute;
+    width: 100%;
+}
